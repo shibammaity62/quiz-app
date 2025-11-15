@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz — Play</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container quiz-card">
+    <header class="quiz-header">
+      <div>
+        <h2 id="welcome"></h2>
+        <div class="small muted">Question <span id="curIdx">1</span> / <span id="totalQ">1</span></div>
+      </div>
+      <div>
+        <div id="timer" class="timer">Time: <span id="timeLeft">15</span>s</div>
+        <div class="controls">
+          <button class="btn ghost" onclick="window.location='index.html'">Home</button>
+          <button class="btn ghost" onclick="openAdmin()">Admin</button>
+        </div>
+      </div>
+    </header>
+
+    <div id="progressWrap"><div id="progressBar"></div></div>
+
+    <main>
+      <div id="questionText" class="question">Loading...</div>
+      <div id="options" class="options"></div>
+
+      <div class="meta">
+        <div id="feedback" class="small muted"></div>
+        <div class="meta-actions">
+          <button class="btn ghost" onclick="skipQ()">Skip</button>
+          <button class="btn" onclick="submitQ()">Submit</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <audio id="tick" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+  <audio id="ding" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+
+  <script src="script.js"></script>
+  <script>
+    // quiz page logic glue
+    let session = JSON.parse(localStorage.getItem('quiz_session') || '{}');
+    if(!session || !session.name){
+      // fallback: redirect to home if session missing
+      location.href = 'index.html';
+    }
+
+    // initialize: read questions (script.js exposes loadQuestions)
+    (async function initQuiz(){
+      document.getElementById('welcome').innerText = `Hello, ${session.name}`;
+      const {questions, error} = await loadQuestions(); // from script.js
+      if(error){
+        alert('Unable to load questions: ' + error + '. Open admin to add questions or ensure questions.json is present.');
+        location.href = 'admin.html';
+        return;
+      }
+
+      // build working set
+      let working = [...questions];
+      if(session.qcount && session.qcount !== 'auto'){
+        const c = parseInt(session.qcount,10);
+        if(!isNaN(c)) working = working.slice(0, c);
+      }
+      if(session.shuffle) shuffleArray(working);
+
+      startQuizWithSet(working, session.timePerQ, session.name);
+    })();
+  </script>
+</body>
+</html>

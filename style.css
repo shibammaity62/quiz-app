@@ -1,0 +1,49 @@
+:root{
+  --bg:#f3f6fb; --card:#ffffff; --text:#111827; --muted:#6b7280;
+  --accent:#4caf50; --danger:#ff5252; --correct:#00c853;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter, system-ui, Arial;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+
+.container{width:100%;max-width:920px}
+.center-card{display:flex;flex-direction:column;gap:12px;align-items:center;padding:18px;background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,0.06)}
+.quiz-card{padding:16px;background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,0.06)}
+.admin-card{padding:16px;background:var(--card);border-radius:12px;box-shadow:0 8px 24px rgba(16,24,40,0.06)}
+
+h1,h2{margin:0}
+.small{font-size:13px}
+.muted{color:var(--muted)}
+
+.form-row{width:100%;margin-top:10px}
+.split{display:flex;gap:8px}
+input[type="text"], input[type="number"], textarea, select{
+  width:100%;padding:10px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);
+}
+textarea{min-height:80px;resize:vertical}
+
+.btn{background:var(--accent);color:white;padding:10px 12px;border-radius:8px;border:none;cursor:pointer}
+.btn.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);color:var(--text)}
+.btn.warn{background:var(--danger)}
+.controls{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+
+.quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.timer{font-weight:700;color:var(--danger)}
+
+#progressWrap{height:10px;background:rgba(0,0,0,0.04);border-radius:8px;overflow:hidden;margin-bottom:12px}
+#progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#2bbbad)}
+
+.question{font-size:18px;margin-bottom:12px}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{padding:12px;border-radius:10px;background:rgba(0,0,0,0.03);cursor:pointer;border:1px solid transparent;transition:all .12s}
+.option:hover{transform:translateY(-4px)}
+.option.selected{box-shadow:0 6px 20px rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.05)}
+
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.meta-actions{display:flex;gap:8px}
+
+.center{text-align:center}
+.scoreBig{font-size:32px;margin:8px 0}
+.leaderboard{background:rgba(0,0,0,0.03);padding:8px;border-radius:8px;max-height:260px;overflow:auto}
+
+.q-list{max-height:260px;overflow:auto}
+.q-item{padding:8px;border-radius:8px;margin-bottom:8px;background:linear-gradient(180deg, rgba(0,0,0,0.02), transparent)}

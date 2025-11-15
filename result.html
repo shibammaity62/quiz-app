@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz — Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container center-card">
+    <h1>Quiz Results</h1>
+
+    <div id="resultBox" class="card">
+      <div class="center">
+        <div class="scoreBig" id="scoreText">0 / 0</div>
+        <div class="small muted" id="scorePerc">0%</div>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="btn" onclick="location.href='index.html'">Play Again</button>
+        <button class="btn ghost" onclick="exportScores()">Export Scores</button>
+      </div>
+
+      <h3 style="margin-top:14px">Leaderboard</h3>
+      <div id="leaderboard" class="leaderboard"></div>
+    </div>
+
+    <p class="small muted" style="margin-top:10px">Scores are stored locally in your browser. Use Export to backup.</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // read latest run result (saved by script.js's finishQuiz)
+    (function render(){
+      const last = JSON.parse(localStorage.getItem('last_result') || 'null');
+      if(last){
+        document.getElementById('scoreText').innerText = `${last.score} / ${last.total}`;
+        const perc = Math.round((last.score/last.total)*100);
+        document.getElementById('scorePerc').innerText = `${perc}% — ${last.name} on ${new Date(last.when).toLocaleString()}`;
+      } else {
+        document.getElementById('scoreText').innerText = `No recent result`;
+        document.getElementById('scorePerc').innerText = '';
+      }
+      renderLeaderboardOnPage();
+    })();
+  </script>
+</body>
+</html>

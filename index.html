@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz App — Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container center-card">
+    <h1>Welcome to Ultimate Quiz</h1>
+    <p class="muted">Practice. Time-limited questions. Local leaderboard. Admin editable questions.</p>
+
+    <div class="form-row">
+      <input id="name" type="text" placeholder="Enter your name (for leaderboard)"/>
+    </div>
+
+    <div class="form-row split">
+      <label>
+        Questions:
+        <select id="qcount">
+          <option value="auto">All (auto)</option>
+          <option value="3">3</option>
+          <option value="5">5</option>
+          <option value="10">10</option>
+        </select>
+      </label>
+
+      <label>
+        Time / Q:
+        <select id="timePerQ">
+          <option value="10">10s</option>
+          <option value="15" selected>15s</option>
+          <option value="20">20s</option>
+          <option value="30">30s</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="form-row split">
+      <button id="startBtn" class="btn">Start Quiz</button>
+      <button id="startShuffle" class="btn ghost">Start (Shuffle)</button>
+    </div>
+
+    <div class="form-row split">
+      <a href="admin.html" class="btn ghost">Open Admin</a>
+      <a href="result.html" class="btn ghost">View Leaderboard</a>
+    </div>
+
+    <p class="small muted">Tip: Use Admin (password: <strong>admin123</strong>) to add/edit questions. Questions are stored in browser localStorage. A default `questions.json` is included and used if localStorage has none.</p>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // index-specific handlers
+    document.getElementById('startBtn').addEventListener('click', () => startFromIndex(false));
+    document.getElementById('startShuffle').addEventListener('click', () => startFromIndex(true));
+
+    function startFromIndex(shuffle) {
+      const name = document.getElementById('name').value.trim() || 'Anonymous';
+      const qcount = document.getElementById('qcount').value;
+      const timePerQ = parseInt(document.getElementById('timePerQ').value, 10) || 15;
+
+      // Save session settings to localStorage for quiz.html to read
+      localStorage.setItem('quiz_session', JSON.stringify({ name, qcount, timePerQ, shuffle }));
+      // Navigate
+      location.href = 'quiz.html';
+    }
+  </script>
+</body>
+</html>

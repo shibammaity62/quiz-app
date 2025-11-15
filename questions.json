@@ -1,0 +1,182 @@
+  [
+  {
+    "q": "Who is known as the God of Cricket?",
+    "a": ["Virat Kohli", "Ricky Ponting", "Sachin Tendulkar", "MS Dhoni"],
+    "correct": 2,
+    "tag": "cricket"
+  },
+  {
+    "q": "Which country won the FIFA World Cup 2022?",
+    "a": ["France", "Brazil", "Argentina", "Germany"],
+    "correct": 2,
+    "tag": "football"
+  },
+  {
+    "q": "Who is known as the King of Bollywood?",
+    "a": ["Aamir Khan", "Salman Khan", "Shah Rukh Khan", "Akshay Kumar"],
+    "correct": 2,
+    "tag": "bollywood"
+  },
+  {
+    "q": "Which company created the iPhone?",
+    "a": ["Samsung", "Apple", "Nokia", "Google"],
+    "correct": 1,
+    "tag": "tech"
+  },
+  {
+    "q": "Who is the current Secretary-General of the United Nations?",
+    "a": ["Ban Ki-moon", "António Guterres", "Kofi Annan", "Jim Yong Kim"],
+    "correct": 1,
+    "tag": "politics"
+  },
+  {
+    "q": "Largest planet in our solar system?",
+    "a": ["Mars", "Earth", "Jupiter", "Saturn"],
+    "correct": 2,
+    "tag": "space"
+  },
+  {
+    "q": "Who invented the light bulb?",
+    "a": ["Einstein", "Thomas Edison", "Newton", "Tesla"],
+    "correct": 1,
+    "tag": "science"
+  },
+  {
+    "q": "Which metal is liquid at room temperature?",
+    "a": ["Mercury", "Aluminium", "Copper", "Silver"],
+    "correct": 0,
+    "tag": "science"
+  },
+  {
+    "q": "Which is the longest river in the world?",
+    "a": ["Amazon", "Nile", "Ganga", "Yangtze"],
+    "correct": 1,
+    "tag": "geography"
+  },
+  {
+    "q": "The smallest prime number is?",
+    "a": ["0", "1", "2", "3"],
+    "correct": 2,
+    "tag": "math"
+  },
+  {
+    "q": "Who was the first President of India?",
+    "a": ["Rajendra Prasad", "APJ Abdul Kalam", "Pranab Mukherjee", "Jawaharlal Nehru"],
+    "correct": 0,
+    "tag": "history"
+  },
+  {
+    "q": "Which country is known as the Land of the Rising Sun?",
+    "a": ["China", "Japan", "Thailand", "South Korea"],
+    "correct": 1,
+    "tag": "general"
+  },
+  {
+    "q": "Which city is the capital of Australia?",
+    "a": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "correct": 2,
+    "tag": "geography"
+  },
+  {
+    "q": "Who is known as the Father of Computers?",
+    "a": ["Charles Babbage", "Alan Turing", "Bill Gates", "Steve Jobs"],
+    "correct": 0,
+    "tag": "tech"
+  },
+  {
+    "q": "What does RAM stand for?",
+    "a": ["Read Access Memory", "Random Access Memory", "Run Active Memory", "Read And Manage"],
+    "correct": 1,
+    "tag": "tech"
+  },
+  {
+    "q": "Which game is the National Sport of India?",
+    "a": ["Cricket", "Hockey", "Kabaddi", "Football"],
+    "correct": 1,
+    "tag": "sports"
+  },
+  {
+    "q": "Which is the largest continent?",
+    "a": ["Africa", "Asia", "Europe", "Australia"],
+    "correct": 1,
+    "tag": "geography"
+  },
+  {
+    "q": "What is the hardest natural substance?",
+    "a": ["Gold", "Iron", "Diamond", "Platinum"],
+    "correct": 2,
+    "tag": "science"
+  },
+  {
+    "q": "Which gas is released by plants during photosynthesis?",
+    "a": ["Carbon Dioxide", "Nitrogen", "Oxygen", "Hydrogen"],
+    "correct": 2,
+    "tag": "science"
+  },
+  {
+    "q": "Who directed the movie '3 Idiots'?",
+    "a": ["Rajkumar Hirani", "Karan Johar", "Zoya Akhtar", "Anurag Kashyap"],
+    "correct": 0,
+    "tag": "bollywood"
+  },
+  {
+    "q": "Which team has won the most IPL titles?",
+    "a": ["CSK", "MI", "RCB", "KKR"],
+    "correct": 1,
+    "tag": "cricket"
+  },
+  {
+    "q": "Which country invented pizza?",
+    "a": ["USA", "France", "Italy", "Germany"],
+    "correct": 2,
+    "tag": "food"
+  },
+  {
+    "q": "Who was the first person to step on the Moon?",
+    "a": ["Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin", "Michael Collins"],
+    "correct": 0,
+    "tag": "space"
+  },
+  {
+    "q": "Which animal is known as the Ship of the Desert?",
+    "a": ["Camel", "Horse", "Goat", "Elephant"],
+    "correct": 0,
+    "tag": "general"
+  },
+  {
+    "q": "Which Indian city is known as the Pink City?",
+    "a": ["Delhi", "Mumbai", "Jaipur", "Kolkata"],
+    "correct": 2,
+    "tag": "geography"
+  },
+  {
+    "q": "Which language is used to build Android apps?",
+    "a": ["Python", "Java", "HTML", "Swift"],
+    "correct": 1,
+    "tag": "programming"
+  },
+  {
+    "q": "Which company owns YouTube?",
+    "a": ["Microsoft", "Apple", "Google", "Amazon"],
+    "correct": 2,
+    "tag": "tech"
+  },
+  {
+    "q": "What is the chemical symbol for Gold?",
+    "a": ["Ag", "Au", "Gd", "Go"],
+    "correct": 1,
+    "tag": "science"
+  },
+  {
+    "q": "Who wrote the Indian National Anthem?",
+    "a": ["Rabindranath Tagore", "Bankim Chandra", "Subhash Bose", "Gandhi"],
+    "correct": 0,
+    "tag": "history"
+  },
+  {
+    "q": "Which game is known as the Game of Kings?",
+    "a": ["Carrom", "Cricket", "Chess", "Badminton"],
+    "correct": 2,
+    "tag": "general"
+  }
+]

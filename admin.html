@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz — Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container admin-card">
+    <h1>Admin Panel</h1>
+    <p class="muted">Password: <strong>admin123</strong></p>
+
+    <div id="adminArea">
+      <div class="card">
+        <label class="small">Question text</label>
+        <textarea id="qtext" placeholder="Write the question"></textarea>
+
+        <div class="form-row">
+          <input id="a0" placeholder="Option A" />
+          <input id="a1" placeholder="Option B" />
+        </div>
+        <div class="form-row">
+          <input id="a2" placeholder="Option C" />
+          <input id="a3" placeholder="Option D" />
+        </div>
+
+        <div class="form-row split">
+          <select id="correct">
+            <option value="">Select correct</option>
+            <option value="0">Option A</option>
+            <option value="1">Option B</option>
+            <option value="2">Option C</option>
+            <option value="3">Option D</option>
+          </select>
+          <input id="tag" placeholder="Tag (optional)"/>
+        </div>
+
+        <div class="form-row">
+          <button class="btn" id="saveQ">Save Question</button>
+          <button class="btn ghost" id="clearQ">Clear</button>
+          <button class="btn warn" id="delAll">Delete All Questions</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:12px">
+        <h3>Existing Questions</h3>
+        <div id="qList" class="q-list"></div>
+        <div style="margin-top:8px" class="form-row">
+          <button class="btn ghost" id="exportQs">Export Questions</button>
+          <input type="file" id="importFile" accept=".json" style="display:none"/>
+          <button class="btn ghost" onclick="document.getElementById('importFile').click()">Import Questions</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px">
+      <a href="index.html" class="btn ghost">Back to Home</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // ensure admin actions use correct functions in script.js
+    (function adminInit(){
+      // require password prompt
+      const pass = prompt("Enter admin password:");
+      if(pass !== 'admin123'){ alert('Wrong password.'); window.location.href = 'index.html'; return; }
+      refreshAdminList();
+
+      document.getElementById('saveQ').addEventListener('click', () => {
+        const q = document.getElementById('qtext').value.trim();
+        const a0 = document.getElementById('a0').value.trim();
+        const a1 = document.getElementById('a1').value.trim();
+        const a2 = document.getElementById('a2').value.trim();
+        const a3 = document.getElementById('a3').value.trim();
+        const correct = document.getElementById('correct').value;
+        const tag = document.getElementById('tag').value.trim();
+        if(!q || !a0 || !a1 || !a2 || !a3 || correct === ""){ alert('Fill all fields and select correct option'); return; }
+        addQuestion({ q, a: [a0,a1,a2,a3], correct: parseInt(correct,10), tag });
+        clearForm();
+        refreshAdminList();
+      });
+
+      document.getElementById('clearQ').addEventListener('click', clearForm);
+      document.getElementById('delAll').addEventListener('click', () => {
+        if(confirm('Delete all questions?')) deleteAllQuestions();
+        refreshAdminList();
+      });
+
+      document.getElementById('exportQs').addEventListener('click', exportQuestions);
+      document.getElementById('importFile').addEventListener('change', importQuestionsFile);
+    })();
+
+    function clearForm(){
+      document.getElementById('qtext').value=''; document.getElementById('a0').value=''; document.getElementById('a1').value=''; document.getElementById('a2').value=''; document.getElementById('a3').value=''; document.getElementById('correct').value=''; document.getElementById('tag').value='';
+    }
+
+    function refreshAdminList(){
+      const qlist = document.getElementById('qList');
+      const qs = getStoredQuestions();
+      qlist.innerHTML = '';
+      qs.forEach((item, i) => {
+        const row = document.createElement('div');
+        row.className = 'q-item';
+        row.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-weight:600">Q${i+1}</div>
+          <div style="display:flex;gap:6px">
+            <button class="btn ghost" onclick="editQuestion(${i})">Edit</button>
+            <button class="btn warn" onclick="removeQuestion(${i})">Delete</button>
+          </div></div>
+        <div style="margin-top:6px">${escapeHtml(item.q)}</div>
+        <div class="small muted" style="margin-top:6px">Options: ${escapeHtml(item.a.join(' | '))} — Correct: ${escapeHtml(item.a[item.correct]||'')}</div>`;
+        qlist.appendChild(row);
+      });
+    }
+
+    function editQuestion(i){
+      const qs = getStoredQuestions();
+      const item = qs[i];
+      document.getElementById('qtext').value = item.q;
+      document.getElementById('a0').value = item.a[0] || '';
+      document.getElementById('a1').value = item.a[1] || '';
+      document.getElementById('a2').value = item.a[2] || '';
+      document.getElementById('a3').value = item.a[3] || '';
+      document.getElementById('correct').value = item.correct;
+      document.getElementById('tag').value = item.tag || '';
+      // modify addQuestion to update this index by removing and inserting on save
+      // We'll delete old and then add new on save
+      removeQuestion(i);
+    }
+
+    function removeQuestion(i){
+      deleteQuestion(i);
+      refreshAdminList();
+    }
+
+    function importQuestionsFile(e){
+      const f = e.target.files[0];
+      if(!f) return;
+      const r = new FileReader();
+      r.onload = () => {
+        try {
+          const arr = JSON.parse(r.result);
+          if(!Array.isArray(arr)) throw new Error('Invalid format');
+          saveQuestionsToStorage(arr);
+          alert('Imported questions.');
+          refreshAdminList();
+        } catch(err){ alert('Import failed: ' + err.message); }
+      };
+      r.readAsText(f);
+    }
+  </script>
+</body>
+</html>
