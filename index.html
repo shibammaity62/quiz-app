@@ -6,53 +6,54 @@
   <title>Quiz App — Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container center-card">
-    <h1>Welcome to Ultimate Quiz</h1>
-    <p class="muted">Practice. Time-limited questions. Local leaderboard. Admin editable questions.</p>
 
-    <div class="form-row">
-      <input id="name" type="text" placeholder="Enter your name (for leaderboard)"/>
+<body>
+
+  <div class="home-card">
+    
+    <h1 class="brand-title">Ultimate Quiz</h1>
+    <p class="subtitle">Practice • Timed Questions • Local Leaderboard</p>
+
+    <div class="input-group">
+      <input id="name" type="text" placeholder="Enter your name" class="modern-input"/>
     </div>
 
-    <div class="form-row split">
-      <label>
-        Questions:
-        <select id="qcount">
+    <div class="dual-row">
+      <div class="field">
+        <label class="field-label">Questions</label>
+        <select id="qcount" class="modern-input">
           <option value="auto">All (auto)</option>
           <option value="3">3</option>
           <option value="5">5</option>
           <option value="10">10</option>
         </select>
-      </label>
+      </div>
 
-      <label>
-        Time / Q:
-        <select id="timePerQ">
+      <div class="field">
+        <label class="field-label">Time / Question</label>
+        <select id="timePerQ" class="modern-input">
           <option value="10">10s</option>
           <option value="15" selected>15s</option>
           <option value="20">20s</option>
           <option value="30">30s</option>
         </select>
-      </label>
+      </div>
     </div>
 
-    <div class="form-row split">
-      <button id="startBtn" class="btn">Start Quiz</button>
-      <button id="startShuffle" class="btn ghost">Start (Shuffle)</button>
+    <div class="btn-row">
+      <button id="startBtn" class="big-btn primary-btn">Start Quiz</button>
+      <button id="startShuffle" class="big-btn secondary-btn">Shuffle Mode</button>
     </div>
 
-    <div class="form-row split">
-      <a href="admin.html" class="btn ghost">Open Admin</a>
-      <a href="result.html" class="btn ghost">View Leaderboard</a>
+    <div class="link-row">
+      <a href="admin.html" class="link-btn">Admin Panel</a>
+      <a href="result.html" class="link-btn">Leaderboard</a>
     </div>
 
-    <p class="small muted">Tip: Use Admin (password: <strong>admin123</strong>) to add/edit questions. Questions are stored in browser localStorage. A default `questions.json` is included and used if localStorage has none.</p>
   </div>
 
   <script src="script.js"></script>
   <script>
-    // index-specific handlers
     document.getElementById('startBtn').addEventListener('click', () => startFromIndex(false));
     document.getElementById('startShuffle').addEventListener('click', () => startFromIndex(true));
 
@@ -61,11 +62,10 @@
       const qcount = document.getElementById('qcount').value;
       const timePerQ = parseInt(document.getElementById('timePerQ').value, 10) || 15;
 
-      // Save session settings to localStorage for quiz.html to read
       localStorage.setItem('quiz_session', JSON.stringify({ name, qcount, timePerQ, shuffle }));
-      // Navigate
       location.href = 'quiz.html';
     }
   </script>
+
 </body>
 </html>
