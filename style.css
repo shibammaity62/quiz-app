@@ -1,3 +1,132 @@
+/* -------------------------
+   Modern Home Page Styling
+--------------------------*/
+
+body {
+  background: linear-gradient(to bottom right, #eef2ff, #f8fafc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.home-card {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #3b82f6, #10b981);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  margin: 6px 0 26px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.input-group, .dual-row, .btn-row, .link-row {
+  margin-top: 18px;
+}
+
+.dual-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field {
+  width: 100%;
+  text-align: left;
+}
+
+.field-label {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+}
+
+.modern-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  transition: 0.2s ease;
+}
+
+.modern-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.2);
+  outline: none;
+}
+
+.big-btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.primary-btn {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: white;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+
+.secondary-btn {
+  background: rgba(59,130,246,0.08);
+  color: #1e40af;
+}
+
+.secondary-btn:hover {
+  background: rgba(59,130,246,0.12);
+  transform: translateY(-3px);
+}
+
+.link-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.link-btn {
+  padding: 10px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #475569;
+  border-radius: 10px;
+  transition: 0.2s;
+  border: 1px solid #e5e7eb;
+}
+
+.link-btn:hover {
+  background: #f1f5f9;
+}
+
+
 :root{
   --bg:#f3f6fb; --card:#ffffff; --text:#111827; --muted:#6b7280;
   --accent:#4caf50; --danger:#ff5252; --correct:#00c853;
